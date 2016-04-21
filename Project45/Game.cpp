@@ -5,6 +5,7 @@
 #include <string>
 #include "Stats.h"
 #include "Game.h"
+#include "Items.h"
 
 using namespace std;
 
@@ -17,8 +18,11 @@ void Game::run(){
 
 	int menu0 = 0;
 
-	cout << "TBD" << endl;
+	cout << "Codies: The Game" << endl;
+	cout << endl;
 	cout << "By: Chase & Max" << endl;
+	cout << endl;
+	cout << endl;
 	cout << "What would you like to do?" << endl;
 	cout << "1.) New Game" << endl;
 	cout << "2.) Load Game" << endl;
@@ -106,14 +110,18 @@ void Game::run(){
 					a.setHealth(a.getMaxHealth());
 					a.setStamina(a.getStamina());
 				}
+				
+				}
 			}
 			if (temp == 2){
+				temp = 0;
 				cout << "Where would you like to battle?" << endl;
 				cout << "1.) Training (1 - 5)" << endl;
 				cout << "2.) Forest (5 - 8)" << endl;
 				cout << "3.) Desert (8 - 12)" << endl;
 				cout << "4.) Cave (12 - 15)" << endl;
 				cout << "5.) Castle (15 - 20)" << endl;
+				cin >> temp;
 			}
 		}
 
