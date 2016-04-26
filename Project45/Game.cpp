@@ -75,7 +75,7 @@ void Game::run(){
 		a.setMaxStamina(100);
 		a.setStamina(100);
 		a.setLevel(1);
-		a.setDamage(10);
+		a.setDamage(8);
 		b.setSchmeebs(20);
 	}
 	if (temp == 1010){
@@ -90,6 +90,7 @@ void Game::run(){
 
 	do{
 		cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << " | Schmeebs: " << b.getSchmeebs() << endl;
+		cout << "Weapon: " << b.getWeaponName() << endl;
 		cout << "1.) Home" << endl;
 		cout << "2.) Battle" << endl;
 		cout << "3.) Exit" << endl;
@@ -118,24 +119,29 @@ void Game::run(){
 							int purchase;
 							value = a.getLevel();
 							cout << "Items available for purchase: " << endl;
-							cout << "1.) Dagger" << endl;
+							cout << "1.) Dagger" << endl; // +2
 							if (value > 5){
-								cout << "2.) Rusty Sword" << endl;
+								cout << "2.) Rusty Sword" << endl; // +4
 							}
 							if (value > 10){
-								cout << "3.) Straight Sword" << endl;
+								cout << "3.) Straight Sword" << endl; // +6
 							}
 							if (value > 15){
-								cout << "4.) Great Sword" << endl;
+								cout << "4.) Great Sword" << endl; // +8
 							}
 							if (value > 20){
-								cout << "5.) Stick" << endl;
+								cout << "5.) Stick" << endl; // +10
 							}
 							cout << "6.) Leave" << endl;
 							
 							cin >> purchase;
 							b.setPurchase(purchase);
-							
+							switch (b.getPurchase()){
+							case 1:
+								b.setWeaponName("Dagger");
+								b.setWeaponDmg(5);
+
+							}
 						}
 
 
@@ -154,6 +160,8 @@ void Game::run(){
 					}
 				}
 			}
+			
+			a.setDamage(b.getWeaponDmg() + a.getDamage());
 
 			if (temp == 2){
 				cout << "Where would you like to battle?" << endl;
