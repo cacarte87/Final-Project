@@ -11,6 +11,7 @@ using namespace std;
 
 void Game::run(){
 	Stats a;
+	Items b;
 	int temp;
 	ifstream f;
 	ofstream of;
@@ -19,10 +20,7 @@ void Game::run(){
 	int menu0 = 0;
 
 	cout << "Codies: The Game" << endl;
-	cout << endl;
 	cout << "By: Chase & Max" << endl;
-	cout << endl;
-	cout << endl;
 	cout << "What would you like to do?" << endl;
 	cout << "1.) New Game" << endl;
 	cout << "2.) Load Game" << endl;
@@ -39,7 +37,7 @@ void Game::run(){
 
 		if (save == 1){
 			of.open("save1.txt", ios::out || ios::trunc);
-			
+
 		}
 		if (save == 2){
 			of.open("save2.txt", ios::out || ios::trunc);
@@ -68,7 +66,8 @@ void Game::run(){
 		a.setMaxStamina(50);
 		a.setStamina(50);
 		a.setLevel(1);
-		
+		a.setDamage(5);
+		b.setSchmeebs(20);
 	}
 	if (temp == 2){
 		a.setMaxHealth(50);
@@ -76,19 +75,21 @@ void Game::run(){
 		a.setMaxStamina(100);
 		a.setStamina(100);
 		a.setLevel(1);
-		
+		a.setDamage(10);
+		b.setSchmeebs(20);
 	}
 	if (temp == 1010){
 		a.setMaxHealth(99999);
 		a.setHealth(99999);
 		a.setMaxStamina(99999);
 		a.setStamina(99999);
-		a.setLevel(1);
+		a.setLevel(20);
+		a.setDamage(999);
+		b.setSchmeebs(999);
 	}
 
-
 	do{
-		cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << endl;
+		cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << " | Schmeebs: " << b.getSchmeebs() << endl;
 		cout << "1.) Home" << endl;
 		cout << "2.) Battle" << endl;
 		cout << "3.) Exit" << endl;
@@ -96,35 +97,81 @@ void Game::run(){
 		temp = 0;
 		cin >> temp;
 		for (int i = 0;; i++){
-			if (temp == 1){
-				cout << "HOME" << endl;
-				cout << "1.) Shop" << endl;
-				cout << "2.) Sleep" << endl;
-				cout << "3.) Exit" << endl;
-				temp = 0;
-				cin >> temp;
+			for (int i = 0;; i++){
 				if (temp == 1){
+					cout << "HOME" << endl;
+					cout << "1.) Shop" << endl;
+					cout << "2.) Sleep" << endl;
+					cout << "3.) Exit" << endl;
+					temp;
+					cin >> temp;
+					if (temp == 1){
+						cout << "What would you like to buy?" << endl;
+						cout << "1.) Weapons" << endl;
+						cout << "2.) Armor" << endl;
+						cout << "3.) Exit" << endl;
+						cin >> temp;
 
-				}
-				if (temp == 2){
-					a.setHealth(a.getMaxHealth());
-					a.setStamina(a.getStamina());
-				}
-				
+
+						if (temp == 1){
+							int value;
+							int purchase;
+							value = a.getLevel();
+							cout << "Items available for purchase: " << endl;
+							cout << "1.) Dagger" << endl;
+							if (value > 5){
+								cout << "2.) Rusty Sword" << endl;
+							}
+							if (value > 10){
+								cout << "3.) Straight Sword" << endl;
+							}
+							if (value > 15){
+								cout << "4.) Great Sword" << endl;
+							}
+							if (value > 20){
+								cout << "5.) Stick" << endl;
+							}
+							cout << "6.) Leave" << endl;
+							
+							cin >> purchase;
+							b.setPurchase(purchase);
+							
+						}
+
+
+						if (temp == 2){
+						}
+						if (temp == 3){
+							break;
+						}
+					}
+					if (temp == 2){
+						a.setHealth(a.getMaxHealth());
+						a.setStamina(a.getStamina());
+					}
+					if (temp == 3){
+						break;
+					}
 				}
 			}
+
 			if (temp == 2){
-				temp = 0;
 				cout << "Where would you like to battle?" << endl;
 				cout << "1.) Training (1 - 5)" << endl;
 				cout << "2.) Forest (5 - 8)" << endl;
 				cout << "3.) Desert (8 - 12)" << endl;
 				cout << "4.) Cave (12 - 15)" << endl;
 				cout << "5.) Castle (15 - 20)" << endl;
-				cin >> temp;
+				int location = 0;
+				cin >> location;
+				if (location == 1){
+					cout << "Welcome to the Training Level NOOB!" << endl;
+				}
+				if (location == 2){
+					cout << "Welcome to the Forest" << endl;
+				}
 			}
 		}
 
 	} while (temp != 3);
-} 
-
+}

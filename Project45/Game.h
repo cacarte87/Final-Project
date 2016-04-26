@@ -6,5 +6,7 @@ using namespace std;
 class Game{
 public:
 	void run();
-	
+private:
+	int menu();
+
 };

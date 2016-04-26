@@ -34,11 +34,20 @@ public:
 	int getMaxStamina(){
 		return MaxStamina;
 	}
+	void setDamage(int v){
+		damage = v;
+	}
+	int getDamage(){
+		return damage;
+	}
+	
 private:
 	int health;
 	int stamina;
 	int MaxHealth;
 	int MaxStamina;
 	int level;
+	int damage;
+	int schmeebs;
 	
 };
