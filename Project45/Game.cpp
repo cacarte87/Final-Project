@@ -13,6 +13,7 @@ void Game::run(){
 	Stats a;
 	Items b;
 	int temp;
+	int menutemp;
 	ifstream f;
 	ofstream of;
 
@@ -95,22 +96,23 @@ void Game::run(){
 		cout << "2.) Battle" << endl;
 		cout << "3.) Exit" << endl;
 		cout << "4.) Save" << endl;
-		temp = 0;
-		cin >> temp;
+		menutemp = 0;
+		cin >> menutemp;
 		for (int i = 0;; i++){
 			for (int i = 0;; i++){
-				if (temp == 1){
+				if (menutemp == 1){
 					cout << "HOME" << endl;
 					cout << "1.) Shop" << endl;
 					cout << "2.) Sleep" << endl;
 					cout << "3.) Exit" << endl;
-					temp;
+					temp = 0;
 					cin >> temp;
 					if (temp == 1){
 						cout << "What would you like to buy?" << endl;
 						cout << "1.) Weapons" << endl;
 						cout << "2.) Armor" << endl;
 						cout << "3.) Exit" << endl;
+						temp = 0;
 						cin >> temp;
 
 
@@ -129,7 +131,7 @@ void Game::run(){
 							if (value > 15){
 								cout << "4.) Great Sword" << endl; // +8
 							}
-							if (value > 20){
+							if (value == 20){
 								cout << "5.) Stick" << endl; // +10
 							}
 							cout << "6.) Leave" << endl;
@@ -139,13 +141,32 @@ void Game::run(){
 							switch (b.getPurchase()){
 							case 1:
 								b.setWeaponName("Dagger");
-								b.setWeaponDmg(5);
-
+								b.setWeaponDmg(2);
+								break;
+							case 2:
+								b.setWeaponName("Rusty Sword");
+								b.setWeaponDmg(4);
+								break;
+							case 3:
+								b.setWeaponName("Straight Sword");
+								b.setWeaponDmg(6);
+								break;
+							case 4:
+								b.setWeaponName("Great Sword");
+								b.setWeaponDmg(8);
+								break;
+							case 5:
+								b.setWeaponName("Stick");
+								b.setWeaponDmg(10);
+								break;
+							case 6:
+								break;
 							}
 						}
 
 
 						if (temp == 2){
+
 						}
 						if (temp == 3){
 							break;

@@ -16,20 +16,20 @@ public:
 	string getWeaponName(){
 		return WeaponName;
 	}
-	string setWeaponName(string v){
+	void setWeaponName(string v){
 		WeaponName = v;
 	}
 	string getArmorName(){
 		return ArmorName;
 	}
-	string setArmorName(string v){
+	void setArmorName(string v){
 		ArmorName = v;
 	}
-	int setWeaponDmg(int v){
+	void setWeaponDmg(int v){
 		WeaponDmg = v;
 	}
 	int getWeaponDmg(){
-		return WeaponDmg
+		return WeaponDmg;
 	}
 	int getSchmeebs(){
 		return schmeebs;
