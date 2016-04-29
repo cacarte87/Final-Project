@@ -178,13 +178,17 @@ void Game::run(){
 					// END SLEEP
 
 				}
-			
+				if (hometemp == 3){
+					break;
+				}
 					// END HOME
+
+
 				}
 
 				a.setDamage(b.getWeaponDmg() + a.getDamage());
 
-				if (temp == 2){
+				if (menutemp == 2){
 					cout << "Where would you like to battle?" << endl;
 					cout << "1.) Training (1 - 5)" << endl;
 					cout << "2.) Forest (5 - 8)" << endl;
