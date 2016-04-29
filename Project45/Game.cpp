@@ -6,6 +6,7 @@
 #include "Stats.h"
 #include "Game.h"
 #include "Items.h"
+#include "Monster.h"
 
 using namespace std;
 
@@ -189,22 +190,46 @@ void Game::run(){
 				a.setDamage(b.getWeaponDmg() + a.getDamage());
 
 				if (menutemp == 2){
-					cout << "Where would you like to battle?" << endl;
-					cout << "1.) Training (1 - 5)" << endl;
-					cout << "2.) Forest (5 - 8)" << endl;
-					cout << "3.) Desert (8 - 12)" << endl;
-					cout << "4.) Cave (12 - 15)" << endl;
-					cout << "5.) Castle (15 - 20)" << endl;
-					int location = 0;
-					cin >> location;
-					if (location == 1){
-						cout << "Welcome to the Training Level NOOB!" << endl;
+					
+						cout << "Where would you like to battle?" << endl;
+						cout << "1.) Training (1 - 5)" << endl;
+						cout << "2.) Forest (5 - 8)" << endl;
+						cout << "3.) Desert (8 - 12)" << endl;
+						cout << "4.) Cave (12 - 15)" << endl;
+						cout << "5.) Castle (15 - 20)" << endl;
+						cout << "6.) Exit" << endl;
+						cout << endl;
+						int location = 0;
+						cin >> location;
+						switch (location){
+						case 1:
+							cout << "Welcome to the training area!" << endl;
+							cout << endl;
+							break;
+						case 2:
+							cout << "Welcome to the forest!" << endl;
+							cout << endl;
+							break;
+						case 3:
+							cout << "Welcome to the desert!" << endl;
+							cout << endl;
+							break;
+						case 4:
+							cout << "Welcome to the cave!" << endl;
+							cout << endl;
+							break;
+						case 5:
+							cout << "Welcome to the castle!" << endl;
+							cout << endl;
+							break;
+						}
+							if (location == 6){
+								break;
+						}
+						
 					}
-					if (location == 2){
-						cout << "Welcome to the Forest" << endl;
-					}
-				}
-			
+				// END BATTLE
+				
 
 		} 
 	}while (menutemp != 3);

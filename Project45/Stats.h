@@ -40,6 +40,12 @@ public:
 	int getDamage(){
 		return damage;
 	}
+	int getLuck(){
+		return luck;
+	}
+	void setLuck(int v){
+		luck = v;
+	}
 	
 private:
 	int health;
@@ -49,5 +55,6 @@ private:
 	int level;
 	int damage;
 	int schmeebs;
+	int luck;
 	
 };
