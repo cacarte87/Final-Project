@@ -14,6 +14,7 @@ void Game::run(){
 	Items b;
 	int temp;
 	int menutemp;
+	int hometemp;
 	ifstream f;
 	ofstream of;
 
@@ -92,6 +93,7 @@ void Game::run(){
 	do{
 		cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << " | Schmeebs: " << b.getSchmeebs() << endl;
 		cout << "Weapon: " << b.getWeaponName() << endl;
+		cout << endl;
 		cout << "1.) Home" << endl;
 		cout << "2.) Battle" << endl;
 		cout << "3.) Exit" << endl;
@@ -99,108 +101,107 @@ void Game::run(){
 		menutemp = 0;
 		cin >> menutemp;
 		for (int i = 0;; i++){
-			for (int i = 0;; i++){
-				if (menutemp == 1){
-					cout << "HOME" << endl;
-					cout << "1.) Shop" << endl;
-					cout << "2.) Sleep" << endl;
+
+
+			// HOME
+			if (menutemp == 1){
+				cout << "HOME" << endl;
+				cout << "1.) Shop" << endl;
+				cout << "2.) Sleep" << endl;
+				cout << "3.) Exit" << endl;
+				hometemp = 0;
+				cin >> hometemp;
+				if (hometemp == 1){
+					cout << "What would you like to buy?" << endl;
+					cout << "1.) Weapons" << endl;
+					cout << "2.) Armor" << endl;
 					cout << "3.) Exit" << endl;
 					temp = 0;
 					cin >> temp;
+
+					// SHOP
 					if (temp == 1){
-						cout << "What would you like to buy?" << endl;
-						cout << "1.) Weapons" << endl;
-						cout << "2.) Armor" << endl;
-						cout << "3.) Exit" << endl;
-						temp = 0;
-						cin >> temp;
-
-
-						if (temp == 1){
-							int value;
-							int purchase;
-							value = a.getLevel();
-							cout << "Items available for purchase: " << endl;
-							cout << "1.) Dagger" << endl; // +2
-							if (value > 5){
-								cout << "2.) Rusty Sword" << endl; // +4
-							}
-							if (value > 10){
-								cout << "3.) Straight Sword" << endl; // +6
-							}
-							if (value > 15){
-								cout << "4.) Great Sword" << endl; // +8
-							}
-							if (value == 20){
-								cout << "5.) Stick" << endl; // +10
-							}
-							cout << "6.) Leave" << endl;
-							
-							cin >> purchase;
-							b.setPurchase(purchase);
-							switch (b.getPurchase()){
-							case 1:
-								b.setWeaponName("Dagger");
-								b.setWeaponDmg(2);
-								break;
-							case 2:
-								b.setWeaponName("Rusty Sword");
-								b.setWeaponDmg(4);
-								break;
-							case 3:
-								b.setWeaponName("Straight Sword");
-								b.setWeaponDmg(6);
-								break;
-							case 4:
-								b.setWeaponName("Great Sword");
-								b.setWeaponDmg(8);
-								break;
-							case 5:
-								b.setWeaponName("Stick");
-								b.setWeaponDmg(10);
-								break;
-							case 6:
-								break;
-							}
+						int value;
+						int purchase;
+						value = a.getLevel();
+						cout << "Items available for purchase: " << endl;
+						cout << "1.) Dagger" << endl; // +2
+						if (value > 5){
+							cout << "2.) Rusty Sword" << endl; // +4
 						}
-
-
-						if (temp == 2){
-
+						if (value > 10){
+							cout << "3.) Straight Sword" << endl; // +6
 						}
-						if (temp == 3){
+						if (value > 15){
+							cout << "4.) Great Sword" << endl; // +8
+						}
+						if (value == 20){
+							cout << "5.) Stick" << endl; // +10
+						}
+						cout << "6.) Leave" << endl;
+
+						cin >> purchase;
+						b.setPurchase(purchase);
+						switch (b.getPurchase()){
+						case 1:
+							b.setWeaponName("Dagger");
+							b.setWeaponDmg(2);
+							break;
+						case 2:
+							b.setWeaponName("Rusty Sword");
+							b.setWeaponDmg(4);
+							break;
+						case 3:
+							b.setWeaponName("Straight Sword");
+							b.setWeaponDmg(6);
+							break;
+						case 4:
+							b.setWeaponName("Great Sword");
+							b.setWeaponDmg(8);
+							break;
+						case 5:
+							b.setWeaponName("Stick");
+							b.setWeaponDmg(10);
+							break;
+						case 6:
 							break;
 						}
 					}
-					if (temp == 2){
+					// END SHOP
+
+
+					// SLEEP
+					if (hometemp == 2){
 						a.setHealth(a.getMaxHealth());
-						a.setStamina(a.getStamina());
+						cout << "Your health has been restored!" << endl;
 					}
-					if (temp == 3){
-						break;
-					}
+					// END SLEEP
+
 				}
-			}
 			
-			a.setDamage(b.getWeaponDmg() + a.getDamage());
-
-			if (temp == 2){
-				cout << "Where would you like to battle?" << endl;
-				cout << "1.) Training (1 - 5)" << endl;
-				cout << "2.) Forest (5 - 8)" << endl;
-				cout << "3.) Desert (8 - 12)" << endl;
-				cout << "4.) Cave (12 - 15)" << endl;
-				cout << "5.) Castle (15 - 20)" << endl;
-				int location = 0;
-				cin >> location;
-				if (location == 1){
-					cout << "Welcome to the Training Level NOOB!" << endl;
+					// END HOME
 				}
-				if (location == 2){
-					cout << "Welcome to the Forest" << endl;
-				}
-			}
-		}
 
-	} while (temp != 3);
+				a.setDamage(b.getWeaponDmg() + a.getDamage());
+
+				if (temp == 2){
+					cout << "Where would you like to battle?" << endl;
+					cout << "1.) Training (1 - 5)" << endl;
+					cout << "2.) Forest (5 - 8)" << endl;
+					cout << "3.) Desert (8 - 12)" << endl;
+					cout << "4.) Cave (12 - 15)" << endl;
+					cout << "5.) Castle (15 - 20)" << endl;
+					int location = 0;
+					cin >> location;
+					if (location == 1){
+						cout << "Welcome to the Training Level NOOB!" << endl;
+					}
+					if (location == 2){
+						cout << "Welcome to the Forest" << endl;
+					}
+				}
+			
+
+		} 
+	}while (menutemp != 3);
 }
