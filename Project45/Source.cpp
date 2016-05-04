@@ -12,6 +12,7 @@ using namespace std;
 
 void Game::run(){
 	Stats a;
+	Monster monster;
 	Items b;
 	int temp;
 	int menutemp;
@@ -26,37 +27,12 @@ void Game::run(){
 	cout << "By: Chase & Max" << endl;
 	cout << "What would you like to do?" << endl;
 	cout << "1.) New Game" << endl;
-	cout << "2.) Load Game" << endl;
+	
 	cin >> menu0;
 
 	switch (menu0){
 	case 1:
-		int save;
-		cout << "Choose a save file" << endl;
-		cout << "Save 1" << endl;
-		cout << "Save 2" << endl;
-		cout << "Save 3" << endl;
-		cin >> save;
-
-		if (save == 1){
-			of.open("save1.txt", ios::out || ios::trunc);
-
-		}
-		if (save == 2){
-			of.open("save2.txt", ios::out || ios::trunc);
-		}
-		if (save == 3){
-			of.open("save3.txt", ios::out || ios::trunc);
-		}
 		break;
-	case 2:
-		string SaveFile;
-		cout << "Choose your save file (saveX): ";
-		cin >> SaveFile;
-		f.open(SaveFile);
-
-		break;
-
 	}
 
 	cout << "Welcome... choose your class." << endl;
@@ -94,12 +70,11 @@ void Game::run(){
 
 	do{
 		cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << " | Schmeebs: " << b.getSchmeebs() << endl;
-		cout << "Weapon: " << b.getWeaponName() << endl;
+		cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << endl;
 		cout << endl;
 		cout << "1.) Home" << endl;
 		cout << "2.) Battle" << endl;
 		cout << "3.) Exit" << endl;
-		cout << "4.) Save" << endl;
 		menutemp = 0;
 		cin >> menutemp;
 		for (int i = 0;; i++){
@@ -214,6 +189,17 @@ void Game::run(){
 							cout << "3.)Leave" << endl;
 							temp = 0;
 							cin >> temp;
+							if (temp == 1){
+								cout << "A monster has appeared!" << endl;
+								cout << endl;
+								monster.setMonsterHealth(20);
+								monster.setMonsterDamage(5);
+								cout << "Monster Health: " << monster.getMonsterHealth << endl;
+								cout << endl;
+
+
+
+							}
 							if (temp = 2){
 								if (b.getSchmeebs() > 30){
 									cout << "You get nothing!" << endl;
@@ -316,28 +302,7 @@ void Game::run(){
 					}
 				// END BATTLE
 				
-				if (menutemp == 4){
-					string SaveFile;
-					cout << "Enter the save file name (saveX): ";
-					cin >> SaveFile;
-					cout << endl;
-
-					cout << "Saving..." << endl;
-					
-					of.open(SaveFile, ios::out && ios::trunc);
-
-					of << a.getMaxHealth() << endl;
-					of << a.getHealth() << endl;
-					of << a.getDamage() << endl;
-					of << a.getMaxStamina() << endl;
-					of << a.getStamina() << endl;
-					of << a.getLuck() << endl;
-					of << a.getLevel() << endl;
-					of << b.getSchmeebs() << endl;
-					of << b.getWeaponName() << endl;
-					of << b.getArmorName() << endl;
-				}
-				// END SAVE
+			
 		} 
 		
 

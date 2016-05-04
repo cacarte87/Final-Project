@@ -68,11 +68,6 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="save1.txt" />
-    <Text Include="save2.txt" />
-    <Text Include="save3.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Items.h" />
     <ClInclude Include="Monster.h" />

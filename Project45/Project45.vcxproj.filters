@@ -23,17 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="save1.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="save2.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="save3.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Stats.h">
       <Filter>Header Files</Filter>
     </ClInclude>
