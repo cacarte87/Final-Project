@@ -5,11 +5,17 @@
 
 class Monster{
 private:
-	string monster;
+	string MonsterName;
 	int MonsterMaxHealth;
 	int MonsterDamage;
 	int MonsterHealth;
 public:
+	void setMonsterName(string v){
+		MonsterName = v;
+	}
+	string getMonsterName(){
+		return MonsterName;
+	}
 	void setMonsterMaxHealth(int mmh){
 		MonsterMaxHealth = mmh;
 	}
