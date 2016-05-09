@@ -22,7 +22,6 @@ void Game::run(){
 
 	cout << "Codies: The Game" << endl;
 	cout << "By: Chase & Max" << endl;
-	cout << "What would you like to do?" << endl;
 	cout << "1.) New Game" << endl;
 	
 	cin >> menu0;
@@ -66,6 +65,9 @@ void Game::run(){
 	}
 
 	do{
+		if (b.getWeaponDmg() > 0){
+			a.setDamage(b.getWeaponDmg() + a.getDamage());
+		}
 		cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << " | Schmeebs: " << b.getSchmeebs() << endl;
 		cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << endl;
 		cout << endl;
@@ -75,7 +77,7 @@ void Game::run(){
 		menutemp = 0;
 		cin >> menutemp;
 		for (int i = 0;; i++){
-
+			
 
 			// HOME
 			if (menutemp == 1){
@@ -160,7 +162,7 @@ void Game::run(){
 
 				}
 
-				a.setDamage(b.getWeaponDmg() + a.getDamage());
+				
 
 				if (menutemp == 2){
 					cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << " | Schmeebs: " << b.getSchmeebs() << endl;
@@ -207,6 +209,8 @@ void Game::run(){
 								} while (monster.getMonsterHealth() >= 0);
 								cout << "Congrats! You killed a dummy!" << endl;
 								cout << "You got 2 Schmeebs as payment" << endl;
+								cout << endl;
+								cout << endl;
 								b.setSchmeebs(b.getSchmeebs() + 2);
 
 							
