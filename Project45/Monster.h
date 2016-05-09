@@ -16,22 +16,22 @@ public:
 	string getMonsterName(){
 		return MonsterName;
 	}
-	void setMonsterMaxHealth(int mmh){
+	void setmonsterMaxHealth(int mmh){
 		MonsterMaxHealth = mmh;
 	}
-	void setMonsterHealth(int mh){
+	void setmonsterHealth(int mh){
 		MonsterHealth = mh;
 	}
-	void setMonsterDamage(int md){
+	void setmonsterDamage(int md){
 		MonsterDamage = md;
 	}
-	int getMonsterMaxHealth(){
+	int getmonsterMaxHealth(){
 		return MonsterMaxHealth;
 	}
-	int getMonsterHealth(){
+	int getmonsterHealth(){
 		return MonsterHealth;
 	}
-	int getMonsterDamage(){
+	int getmonsterDamage(){
 		return MonsterDamage;
 	}
 
