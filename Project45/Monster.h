@@ -10,10 +10,10 @@ private:
 	int MonsterDamage;
 	int MonsterHealth;
 public:
-	void setMonsterName(string v){
+	void setmonsterName(string v){
 		MonsterName = v;
 	}
-	string getMonsterName(){
+	string getmonsterName(){
 		return MonsterName;
 	}
 	void setmonsterMaxHealth(int mmh){

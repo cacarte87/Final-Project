@@ -67,7 +67,7 @@ void Game::run(){
 	if (temp == 1){
 		a.setMaxHealth(100);
 		a.setHealth(100);
-		a.setMaxStamina(50);
+		a.setMaxStamina(10);
 		a.setStamina(50);
 		a.setLevel(1);
 		a.setDamage(5);
@@ -77,7 +77,7 @@ void Game::run(){
 		a.setMaxHealth(50);
 		a.setHealth(50);
 		a.setMaxStamina(100);
-		a.setStamina(100);
+		a.setStamina(75);
 		a.setLevel(1);
 		a.setDamage(8);
 		b.setSchmeebs(20);
@@ -96,14 +96,9 @@ void Game::run(){
 		if (b.getWeaponDmg()>0){
 			a.setDamage(a.getDamage() + b.getWeaponDmg());
 		}
-		cout << "Health: " << a.getHealth() << " | Stamina: " << a.getStamina() << " | Level: " << a.getLevel() << " | Schmeebs: " << b.getSchmeebs() << endl;
+		cout << "Health: " << a.getHealth() << "/" << a.getMaxHealth() << " | Stamina: " << a.getStamina() << " | Level : " << a.getLevel() << " | Schmeebs : " << b.getSchmeebs() << endl;
 		cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << endl;
 		cout << endl;
-		a.setHealth(a.getHealth() * a.getLevel());
-		a.setMaxHealth(a.getMaxHealth() * a.getLevel());
-		a.setStamina(a.getStamina() * a.getLevel());
-		a.setMaxStamina(a.getMaxStamina() * a.getLevel());
-		a.setDamage(a.getDamage()*a.getLevel());
 		cout << "1.) Home" << endl;
 		cout << "2.) Battle" << endl;
 		cout << "3.) Exit" << endl;
@@ -273,7 +268,7 @@ void Game::run(){
 						do{
 							char choice;
 							cout << "Dummy Health: " << c.getmonsterHealth() << endl;
-							cout << "Do you want to attack? y/n" << endl;
+							cout << "Attack using any key! Use N to leave!" << endl;
 							cin >> choice;
 							if (choice == 'n'){
 								break;
@@ -284,7 +279,7 @@ void Game::run(){
 								cout << "You did " << a.getDamage() << " damage." << endl;
 							}
 						} while (c.getmonsterHealth() > 0);
-						cout << "Congrats! You killed a dummy!" << endl;
+						cout << "Monster has been killed" << endl;
 						cout << "You got 2 Schmeebs as payment" << endl;
 						b.setSchmeebs(b.getSchmeebs() + 2);
 						break;
@@ -298,29 +293,34 @@ void Game::run(){
 
 						else{
 							b.setSchmeebs(b.getSchmeebs() + 1);
-							cout << "ONE SCHMEEB ADDED TO YOUR INVENTORY!!!" << endl;
+							cout << "1 Schmeeb added!" << endl;
 							break;
 						}
 					}
 					if (temp == 3){
-						char boss1;
-						cout << "Are you sure you want to fight the boss? y/n" << endl;
-						cin >> boss1;
-						cout << "Too bad! Fight him anyway!" << endl;
+						cout << "Boss battle initiated!" << endl;
+						c.setmonsterName("Sack of Potatoes");
 						c.setmonsterHealth(200);
 						do{
-							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
-
-							cout << "Master Dummy HP is " << c.getmonsterHealth() << endl;
-							cout << "Attack? y/n" << endl;
-							char option;
-							cin >> option;
-
+							for (int i = 0;; i++){
+								cout << "Health: " << a.getHealth() << "/" << a.getMaxHealth() << " | Stamina: " << a.getStamina() << " | Level : " << a.getLevel() << " | Schmeebs : " << b.getSchmeebs() << endl;
+								cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << endl;
+								cout << endl;
+								cout << "BOSS HEALTH: " << c.getmonsterHealth() << endl;
+								cout << endl;
+								cout << "Attack using any letter!" << endl;
+								char key;
+								cin >> key;
+								a.setStamina(a.getStamina() - 3);
+								cout << "-3 Stamina!" << endl;
+								if (a.getStamina() < 0){
+									cout << "You ran out of stamina..." << endl;
+									break;
+								}
+							}
+							
 						} while (c.getmonsterHealth() > 0);
-						cout << "Congratz!! You have been rewarded with 50 Schmeebs, and advanced to level 5!" << endl;
-						b.setSchmeebs(b.getSchmeebs() + 50);
-						a.setLevel(5);
-
+						
 					}
 					if (temp == 4){
 						break;
@@ -343,7 +343,8 @@ void Game::run(){
 						else(b.setSchmeebs(b.getSchmeebs() + 2));
 						cout << "One Schmeeb added to your inventory!" << endl;
 					}
-					if (temp = 3){
+			
+					if (temp = 4){
 						break;
 					}
 				case 3:
