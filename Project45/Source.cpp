@@ -92,6 +92,9 @@ void Game::run(){
 		if (a.getStamina() <= 0){
 			a.setDamage(0);
 		}
+		if (a.getArmor() != 0){
+			a.setMaxHealth(a.getMaxHealth + a.getArmor());
+		}
 		cout << "Health: " << a.getHealth() << "/" << a.getMaxHealth() << " | Stamina: " << a.getStamina() << " | Level : " << a.getLevel() << " | Schmeebs : " << b.getSchmeebs() << endl;
 		cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << endl;
 		cout << endl;
@@ -178,18 +181,18 @@ void Game::run(){
 							int purchase;
 							value = a.getLevel();
 							cout << "Items available for purchase: " << endl;
-							cout << "1.) Dagger" << endl; // +2
+							cout << "1.) Trash Bag" << endl; // +10
 							if (value > 5){
-								cout << "2.) Rusty Sword" << endl; // +4
+								cout << "2.) Tin Foil" << endl; // +20
 							}
 							if (value > 10){
-								cout << "3.) Straight Sword" << endl; // +6
+								cout << "3.) Metal Armor" << endl; // +50
 							}
 							if (value > 15){
-								cout << "4.) Great Sword" << endl; // +8
+								cout << "4.) Titanium Armor" << endl; // +70
 							}
 							if (value == 20){
-								cout << "5.) Stick" << endl; // +10
+								cout << "5.) Carbon Fiber Armor" << endl; // +100
 							}
 							cout << "6.) Leave" << endl;
 
@@ -197,24 +200,24 @@ void Game::run(){
 							b.setPurchase(purchase);
 							switch (b.getPurchase()){
 							case 1:
-								b.setWeaponName("Dagger");
-								b.setWeaponDmg(2);
+								b.setArmorName("Trash Bag");
+								a.setArmor(10);
 								break;
 							case 2:
-								b.setWeaponName("Rusty Sword");
-								b.setWeaponDmg(4);
+								b.setArmorName("Tin Foil");
+								a.setArmor(20);
 								break;
 							case 3:
-								b.setWeaponName("Straight Sword");
-								b.setWeaponDmg(6);
+								b.setArmorName("Metal Armor");
+								a.setArmor(50);
 								break;
 							case 4:
-								b.setWeaponName("Great Sword");
-								b.setWeaponDmg(8);
+								b.setArmorName("Titanium Armor");
+								a.setArmor(70);
 								break;
 							case 5:
-								b.setWeaponName("Stick");
-								b.setWeaponDmg(10);
+								b.setArmorName("Carbon Fiber Armor");
+								a.setArmor(100);
 								break;
 							case 6:
 								break;

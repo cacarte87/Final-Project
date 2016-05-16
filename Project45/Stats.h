@@ -16,6 +16,9 @@ public:
 	void setStamina(int s){
 		stamina = s;
 	}
+	void setArmor(int v){
+		armor = v;
+	}
 	void setHealth(int h){
 		health = h;
 	}
@@ -40,6 +43,9 @@ public:
 	int getDamage(){
 		return damage;
 	}
+	int getArmor(){
+		return armor;
+	}
 	int getLuck(){
 		return luck;
 	}
@@ -56,5 +62,6 @@ private:
 	int damage;
 	int schmeebs;
 	int luck;
+	int armor;
 	
 };
