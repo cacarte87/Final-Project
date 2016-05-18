@@ -17,44 +17,16 @@ void Game::run(){
 	int temp;
 	int menutemp;
 	int hometemp;
-	ifstream f;
-	ofstream of;
 
 
-	int menu0 = 0;
 
-	cout << "Codies: The Game" << endl;
+	cout << "Codies: The Awakening" << endl;
 	cout << "By: Chase Carte" << endl;
 	
-	cout << "1.) New Game" << endl;
 
-	cin >> menu0;
-
-	switch (menu0){
-	case 1:
-		int save;
-		cout << "Choose a save file" << endl;
-		cout << "Save 1" << endl;
-		cout << "Save 2" << endl;
-		cout << "Save 3" << endl;
-		cin >> save;
-
-		if (save == 1){
-			of.open("save1.txt", ios::out || ios::trunc);
-
-		}
-		if (save == 2){
-			of.open("save2.txt", ios::out || ios::trunc);
-		}
-		if (save == 3){
-			of.open("save3.txt", ios::out || ios::trunc);
-		}
-		break;
-	}
-
-	cout << "Welcome... choose your class." << endl;
-	cout << "1.) Warrior: 100 HP 50 STA" << endl;
-	cout << "2.) Rogue: 50 HP 100 STA" << endl;
+	cout << "Choose your class..." << endl;
+	cout << "1.) Warrior: 100 HP 50 STA 5 DMG" << endl;
+	cout << "2.) Rogue: 50 HP 100 STA 8 DMG" << endl;
 	cout << endl;
 	cin >> temp;
 	if (temp == 1){
@@ -65,6 +37,7 @@ void Game::run(){
 		a.setLevel(1);
 		a.setDamage(5);
 		b.setSchmeebs(20);
+		b.setHPotion(0);
 	}
 	if (temp == 2){
 		a.setMaxHealth(50);
@@ -74,6 +47,7 @@ void Game::run(){
 		a.setLevel(1);
 		a.setDamage(8);
 		b.setSchmeebs(20);
+		b.setHPotion(0);
 	}
 	if (temp == 1010){
 		a.setMaxHealth(99999);
@@ -83,20 +57,22 @@ void Game::run(){
 		a.setLevel(20);
 		a.setDamage(999);
 		b.setSchmeebs(999);
+		b.setHPotion(999);
 	}
 
 	do{
-		if (b.getWeaponDmg()>0){
+		if (b.getWeaponDmg() > 0){
 			a.setDamage(a.getDamage() + b.getWeaponDmg());
 		}
 		if (a.getStamina() <= 0){
 			a.setDamage(0);
 		}
-		if (a.getArmor() != 0){
-			a.setMaxHealth(a.getMaxHealth + a.getArmor());
+		if (a.getArmor() > 0){
+			a.setMaxHealth(a.getMaxHealth() + a.getArmor());
 		}
 		cout << "Health: " << a.getHealth() << "/" << a.getMaxHealth() << " | Stamina: " << a.getStamina() << " | Level : " << a.getLevel() << " | Schmeebs : " << b.getSchmeebs() << endl;
-		cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << endl;
+		cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << " | Armor: " << b.getArmorName() << endl;
+		cout << "Health Potions: " << b.getHPotion();
 		cout << endl;
 		cout << "1.) Home" << endl;
 		cout << "2.) Battle" << endl;
@@ -125,7 +101,8 @@ void Game::run(){
 					cout << "What would you like to buy?" << endl;
 					cout << "1.) Weapons" << endl;
 					cout << "2.) Armor" << endl;
-					cout << "3.) Exit" << endl;
+					cout << "3.) Potions" << endl;
+					cout << "4.) Exit" << endl;
 					temp = 0;
 					cin >> temp;
 
@@ -176,51 +153,69 @@ void Game::run(){
 						case 6:
 							break;
 						}
-						if (temp == 2){
-							int value;
-							int purchase;
-							value = a.getLevel();
-							cout << "Items available for purchase: " << endl;
-							cout << "1.) Trash Bag" << endl; // +10
-							if (value > 5){
-								cout << "2.) Tin Foil" << endl; // +20
-							}
-							if (value > 10){
-								cout << "3.) Metal Armor" << endl; // +50
-							}
-							if (value > 15){
-								cout << "4.) Titanium Armor" << endl; // +70
-							}
-							if (value == 20){
-								cout << "5.) Carbon Fiber Armor" << endl; // +100
-							}
-							cout << "6.) Leave" << endl;
+					
+			
+					}
+					if (temp == 2){
+						int value;
+						int purchase;
+						value = a.getLevel();
+						cout << "Items available for purchase: " << endl;
+						cout << "1.) Trash Bag" << endl; // +10
+						if (value > 5){
+							cout << "2.) Tin Foil" << endl; // +20
+						}
+						if (value > 10){
+							cout << "3.) Metal Armor" << endl; // +50
+						}
+						if (value > 15){
+							cout << "4.) Titanium Armor" << endl; // +70
+						}
+						if (value == 20){
+							cout << "5.) Carbon Fiber Armor" << endl; // +100
+						}
+						cout << "6.) Leave" << endl;
 
-							cin >> purchase;
-							b.setPurchase(purchase);
-							switch (b.getPurchase()){
-							case 1:
-								b.setArmorName("Trash Bag");
-								a.setArmor(10);
-								break;
-							case 2:
-								b.setArmorName("Tin Foil");
-								a.setArmor(20);
-								break;
-							case 3:
-								b.setArmorName("Metal Armor");
-								a.setArmor(50);
-								break;
-							case 4:
-								b.setArmorName("Titanium Armor");
-								a.setArmor(70);
-								break;
-							case 5:
-								b.setArmorName("Carbon Fiber Armor");
-								a.setArmor(100);
-								break;
-							case 6:
-								break;
+						cin >> purchase;
+						b.setPurchase(purchase);
+						switch (b.getPurchase()){
+						case 1:
+							b.setArmorName("Trash Bag");
+							a.setArmor(10);
+							break;
+						case 2:
+							b.setArmorName("Tin Foil");
+							a.setArmor(20);
+							break;
+						case 3:
+							b.setArmorName("Metal Armor");
+							a.setArmor(50);
+							break;
+						case 4:
+							b.setArmorName("Titanium Armor");
+							a.setArmor(70);
+							break;
+						case 5:
+							b.setArmorName("Carbon Fiber Armor");
+							a.setArmor(100);
+							break;
+						case 6:
+							break;
+						}
+					}
+					if (temp == 3){
+						cout << "1.) $5 Health Potion" << endl;
+						int value;
+						cin >> value;
+						switch (value){
+						case 1:
+							if (b.getSchmeebs() - 5 >= 0){
+								b.setHPotion(b.getHPotion() + 1);
+								b.setSchmeebs(b.getSchmeebs() - 5);
+							}
+							else{
+								cout << "Not enough Schmeebs!" << endl;
+								cout << endl;
 							}
 						}
 					}
@@ -301,10 +296,17 @@ void Game::run(){
 						c.setmonsterName("Sack of Potatoes");
 						c.setmonsterHealth(200);
 						do{
+							if (a.getStamina() < 0){
+								cout << endl;
+								cout << "You ran out of stamina..." << endl;
+								if (b.getSchmeebs)
+								cout << endl;
+								break;
 
-							for (int i = 0;; i++){
+							}
+						
 								cout << "Health: " << a.getHealth() << "/" << a.getMaxHealth() << " | Stamina: " << a.getStamina() << " | Level : " << a.getLevel() << " | Schmeebs : " << b.getSchmeebs() << endl;
-								cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << endl;
+								cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << " | Armor: " << b.getArmorName() << endl;
 								cout << endl;
 								cout << "BOSS: " << c.getmonsterName() << endl;
 								cout << "BOSS HEALTH: " << c.getmonsterHealth() << endl;
@@ -317,16 +319,8 @@ void Game::run(){
 								cout << "-3 Stamina!" << endl;
 								cout << "You did " << a.getDamage() << " damage." << endl;
 								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
-								if (a.getStamina() < 0){
-									cout << endl;
-									cout << "You ran out of stamina..." << endl;
-									cout << endl;
-									break;
-								}
-								if (key == 'N'){
-									break;
-								}
-							}
+							
+							
 						} while (c.getmonsterHealth() >= 0);
 						break;
 						

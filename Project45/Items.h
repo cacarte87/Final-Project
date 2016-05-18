@@ -10,6 +10,7 @@ private:
 	int WeaponDmg;
 	int schmeebs;
 	int purchase;
+	int HPotion;
 	
 
 public: 
@@ -24,6 +25,12 @@ public:
 	}
 	void setArmorName(string v){
 		ArmorName = v;
+	}
+	int getHPotion(){
+		return HPotion;
+	}
+	void setHPotion(int v){
+		HPotion = v;
 	}
 	void setWeaponDmg(int v){
 		WeaponDmg = v;
