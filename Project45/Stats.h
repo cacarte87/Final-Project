@@ -10,9 +10,6 @@ public:
 	void setMaxStamina(int ms){
 		MaxStamina = ms;
 	}
-	void setLevel(int l){
-		 level = l;
-	}
 	void setStamina(int s){
 		stamina = s;
 	}
@@ -27,9 +24,6 @@ public:
 	}
 	int getStamina(){
 		return stamina;
-	}
-	int getLevel(){
-		return level;
 	}
 	int getMaxHealth(){
 		return MaxHealth;
@@ -58,7 +52,6 @@ private:
 	int stamina;
 	int MaxHealth;
 	int MaxStamina;
-	int level;
 	int damage;
 	int schmeebs;
 	int luck;

@@ -32,20 +32,20 @@ void Game::run(){
 	if (temp == 1){
 		a.setMaxHealth(100);
 		a.setHealth(100);
-		a.setMaxStamina(10);
-		a.setStamina(50);
+		a.setMaxStamina(60);
+		a.setStamina(60);
 		a.setLevel(1);
-		a.setDamage(5);
+		a.setDamage(8);
 		b.setSchmeebs(20);
 		b.setHPotion(0);
 	}
 	if (temp == 2){
 		a.setMaxHealth(50);
-		a.setHealth(50);
+		a.setHealth(75);
 		a.setMaxStamina(100);
-		a.setStamina(75);
+		a.setStamina(100);
 		a.setLevel(1);
-		a.setDamage(8);
+		a.setDamage(5);
 		b.setSchmeebs(20);
 		b.setHPotion(0);
 	}
@@ -94,7 +94,7 @@ void Game::run(){
 				// SLEEP
 				if (hometemp == 2){
 					a.setHealth(a.getMaxHealth());
-					cout << "Your health has been restored!" << endl;
+					cout << "Your stamina has been restored!" << endl;
 				}
 				// END SLEEP
 				if (hometemp == 1){
@@ -159,45 +159,55 @@ void Game::run(){
 					if (temp == 2){
 						int value;
 						int purchase;
-						value = a.getLevel();
+						
 						cout << "Items available for purchase: " << endl;
-						cout << "1.) Trash Bag" << endl; // +10
-						if (value > 5){
-							cout << "2.) Tin Foil" << endl; // +20
-						}
-						if (value > 10){
-							cout << "3.) Metal Armor" << endl; // +50
-						}
-						if (value > 15){
-							cout << "4.) Titanium Armor" << endl; // +70
-						}
-						if (value == 20){
-							cout << "5.) Carbon Fiber Armor" << endl; // +100
-						}
+						cout << "1.) $10 Trash Bag (+10 ARMOR | +10 STA)" << endl; // +10
+						cout << "2.) $50 Tin Foil (+20 ARMOR | +15 STA)" << endl; // +20
+						cout << "3.) $70 Metal Armor (+50 ARMOR | +20 STA)" << endl; // +50
+						cout << "4.) $100 Titanium Armor (+70 ARMOR | +30 STA)" << endl; // +70
+						cout << "5.) $200 Carbon Fiber Armor (+100 ARMOR | +30 STA)" << endl; // +10			
 						cout << "6.) Leave" << endl;
 
 						cin >> purchase;
 						b.setPurchase(purchase);
 						switch (b.getPurchase()){
 						case 1:
-							b.setArmorName("Trash Bag");
-							a.setArmor(10);
+							if (b.getSchmeebs() >= 10){
+								b.setArmorName("Trash Bag");
+								a.setArmor(10);
+								b.setSchmeebs(b.getSchmeebs() - 10);
+							}
 							break;
 						case 2:
-							b.setArmorName("Tin Foil");
-							a.setArmor(20);
+							if (b.getSchmeebs() >= 50){
+								b.setArmorName("Tin Foil");
+								a.setArmor(20);
+								b.setSchmeebs(b.getSchmeebs() - 50);
+							}
 							break;
 						case 3:
-							b.setArmorName("Metal Armor");
-							a.setArmor(50);
+							if (b.getSchmeebs() >= 70){
+								b.setArmorName("Metal Armor");
+								a.setArmor(50);
+								b.setSchmeebs(b.getSchmeebs() - 70);
+							}
 							break;
 						case 4:
-							b.setArmorName("Titanium Armor");
-							a.setArmor(70);
+							if (b.getSchmeebs() >= 100){
+								b.setArmorName("Titanium Armor");
+								a.setArmor(70);
+								b.setSchmeebs(b.getSchmeebs() - 100);
+							}
+							else{
+								cout << "Not enough schmeebs." << endl;
+							}
 							break;
 						case 5:
-							b.setArmorName("Carbon Fiber Armor");
-							a.setArmor(100);
+							if (b.getSchmeebs() >= 200){
+								b.setArmorName("Carbon Fiber Armor");
+								a.setArmor(100);
+								b.setSchmeebs(b.getSchmeebs() - 150);
+							}
 							break;
 						case 6:
 							break;
@@ -541,7 +551,7 @@ void Game::run(){
 					cout << "What would you like to do here?" << endl;
 					cout << "1.)Attack!" << endl;
 					cout << "2.)Look Around" << endl;
-					cout << "3.)Fight the boss"
+					cout << "3.)Fight the boss" << endl;
 					cout << "4.)Leave" << endl;
 					temp = 0;
 					cin >> temp;
@@ -597,6 +607,9 @@ void Game::run(){
 						} while (c.getmonsterHealth() >= 0);
 						break;
 					}
+					cout << "YOU WIN THE GAME!" << endl;
+					system("pause");
+					return;
 					if (temp = 4){
 						break;
 					}
