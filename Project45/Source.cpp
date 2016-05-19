@@ -74,7 +74,6 @@ void Game::run(){
 		cout << "1.) Home" << endl;
 		cout << "2.) Battle" << endl;
 		cout << "3.) Exit" << endl;
-		cout << "4.) Save" << endl;
 		menutemp = 0;
 		cin >> menutemp;
 		for (int i = 0;; i++){
@@ -90,7 +89,7 @@ void Game::run(){
 				cin >> hometemp;
 				// SLEEP
 				if (hometemp == 2){
-					a.setHealth(a.getMaxHealth());
+					a.setStamina(a.getMaxStamina());
 					cout << "Your stamina has been restored!" << endl;
 				}
 				// END SLEEP
@@ -111,10 +110,10 @@ void Game::run(){
 						cout << "Items available for purchase: " << endl;
 
 						cout << "1.) $15 Dagger (+4 DMG)" << endl; // +4						
-						cout << "2.)  Rusty Sword (+7 DMG)" << endl; // +7											
-						cout << "3.) Straight Sword (+15 DMG)" << endl; // +15												
-						cout << "4.) Great Sword (+20 DMG)" << endl; // +20												
-						cout << "5.) Stick (+30 DMG)" << endl; // +30
+						cout << "2.) $30 Rusty Sword (+7 DMG)" << endl; // +7											
+						cout << "3.) $50 Straight Sword (+15 DMG)" << endl; // +15												
+						cout << "4.) $70 Great Sword (+20 DMG)" << endl; // +20												
+						cout << "5.) $100 Stick (+30 DMG)" << endl; // +30
 						
 						cout << "6.) Leave" << endl;
 
@@ -122,33 +121,38 @@ void Game::run(){
 						b.setPurchase(purchase);
 						switch (b.getPurchase()){
 						case 1:
-							if (b.getSchmeebs() > 15){
+							if (b.getSchmeebs() >= 15){
 								b.setWeaponName("Dagger");
 								b.setWeaponDmg(4);
+								b.setSchmeebs(b.getSchmeebs() - 15);
 							}
 							break;
 						case 2:
-							if (b.getSchmeebs() > 30){
+							if (b.getSchmeebs() >= 30){
 								b.setWeaponName("Rusty Sword");
 								b.setWeaponDmg(7);
+								b.setSchmeebs(b.getSchmeebs() - 30);
 							}
 							break;
 						case 3:
-							if (b.getSchmeebs() > 50){
+							if (b.getSchmeebs() >= 50){
 								b.setWeaponName("Straight Sword");
 								b.setWeaponDmg(15);
+								b.setSchmeebs(b.getSchmeebs() - 50);
 							}
 							break;
 						case 4:
-							if (b.getSchmeebs() > 70){
+							if (b.getSchmeebs() >= 70){
 								b.setWeaponName("Great Sword");
 								b.setWeaponDmg(20);
+								b.setSchmeebs(b.getSchmeebs() - 70);
 							}
 							break;
 						case 5:
-							if (b.getSchmeebs() > 100){
+							if (b.getSchmeebs() >= 100){
 								b.setWeaponName("Stick");
 								b.setWeaponDmg(30);
+								b.setSchmeebs(b.getSchmeebs() - 100);
 							}
 							break;
 						case 6:
@@ -633,4 +637,5 @@ void Game::run(){
 
 		}
 	} while (menutemp != 3);
+	cout << "Quitting game..." << endl;
 }
