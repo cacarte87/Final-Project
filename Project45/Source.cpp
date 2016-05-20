@@ -56,7 +56,7 @@ void Game::run(){
 		b.setSchmeebs(999);
 		b.setHPotion(999);
 	}
-
+	
 	do{
 		if (b.getWeaponDmg() > 0){
 			a.setDamage(a.getDamage() + b.getWeaponDmg());
@@ -364,6 +364,35 @@ void Game::run(){
 					cout << "4.)Leave" << endl;
 					temp = 0;
 					cin >> temp;
+					if (temp == 1){
+						temp = 0;
+						c.setmonsterName("Frog");
+						c.setmonsterHealth(30);
+						c.setmonsterMaxHealth(30);
+						c.setmonsterDamage(3);
+
+
+
+						do{
+							char choice;
+							cout << c.getmonsterName() << " Health: " << c.getmonsterHealth() << endl;
+							cout << "Attack using any key! Use 'n' to leave!" << endl;
+							cin >> choice;
+							if (choice == 'n'){
+								break;
+							}
+							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+							a.setHealth(a.getHealth() - c.getmonsterDamage());
+							cout << "You did " << a.getDamage() << " damage." << endl;
+							cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+
+
+						} while (c.getmonsterHealth() > 0);
+						cout << "Monster has been killed" << endl;
+						cout << "You got 3 Schmeebs as payment" << endl;
+						b.setSchmeebs(b.getSchmeebs() + 3);
+						break;
+					}
 					if (temp == 2){
 						if (b.getSchmeebs() > 20){
 							cout << "You get nothing" << endl;
@@ -437,6 +466,35 @@ void Game::run(){
 					cout << "4.)Leave" << endl;
 					temp = 0;
 					cin >> temp;
+					if (temp == 1){
+						temp = 0;
+						c.setmonsterName("Sand Worm");
+						c.setmonsterHealth(49);
+						c.setmonsterMaxHealth(40);
+						c.setmonsterDamage(7);
+
+
+
+						do{
+							char choice;
+							cout << c.getmonsterName() << " Health: " << c.getmonsterHealth() << endl;
+							cout << "Attack using any key! Use 'n' to leave!" << endl;
+							cin >> choice;
+							if (choice == 'n'){
+								break;
+							}
+							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+							a.setHealth(a.getHealth() - c.getmonsterDamage());
+							cout << "You did " << a.getDamage() << " damage." << endl;
+							cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+
+
+						} while (c.getmonsterHealth() > 0);
+						cout << "Monster has been killed" << endl;
+						cout << "You got 2 Schmeebs as payment" << endl;
+						b.setSchmeebs(b.getSchmeebs() + 2);
+						break;
+					}
 					if (temp = 2){
 						if (b.getSchmeebs() > 70){
 							cout << "You get nothing!" << endl;
@@ -450,7 +508,7 @@ void Game::run(){
 						cout << "Boss battle initiated!" << endl;
 						c.setmonsterName("Giant Scorpion");
 						c.setmonsterHealth(250);
-						c.setmonsterDamage(3);
+						c.setmonsterDamage(10);
 						do{
 							if (a.getStamina() <= 0){
 								cout << endl;
@@ -504,6 +562,7 @@ void Game::run(){
 					cout << "4.)Leave" << endl;
 					temp = 0;
 					cin >> temp;
+
 					if (temp = 2){
 						if (b.getSchmeebs() > 90){
 							cout << "You get nothing!" << endl;
