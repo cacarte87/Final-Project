@@ -491,8 +491,8 @@ void Game::run(){
 
 						} while (c.getmonsterHealth() > 0);
 						cout << "Monster has been killed" << endl;
-						cout << "You got 2 Schmeebs as payment" << endl;
-						b.setSchmeebs(b.getSchmeebs() + 2);
+						cout << "You got 6 Schmeebs as payment" << endl;
+						b.setSchmeebs(b.getSchmeebs() + 6);
 						break;
 					}
 					if (temp = 2){
@@ -597,7 +597,7 @@ void Game::run(){
 							cout << endl;
 						}
 						else(b.setSchmeebs(b.getSchmeebs() + 4));
-						cout << "One Schmeeb added to your inventory!" << endl;
+						cout << "4 schmeebs added to your inventory" << endl;
 					}
 					// BOSS
 					if (temp == 3){
