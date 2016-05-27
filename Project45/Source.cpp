@@ -286,16 +286,17 @@ void Game::run(){
 							if (choice == 'n'){
 								break;
 							}
+							else{
 								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
 								a.setHealth(a.getHealth() - c.getmonsterDamage());
 								cout << "You did " << a.getDamage() << " damage." << endl;
 								cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+							}
 
-							
 						} while (c.getmonsterHealth() > 0);
 						cout << "Monster has been killed" << endl;
-						cout << "You got 2 Schmeebs as payment" << endl;
-						b.setSchmeebs(b.getSchmeebs() + 2);
+						cout << "You got 3 Schmeebs as payment" << endl;
+						b.setSchmeebs(b.getSchmeebs() + 3);
 						break;
 					}
 					if (temp == 2){
@@ -329,21 +330,30 @@ void Game::run(){
 
 							}
 						
-								cout << "Health: " << a.getHealth() << "/" << a.getMaxHealth() << " | Stamina: " << a.getStamina() << " | Schmeebs : " << b.getSchmeebs() << endl;
-								cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << " | Armor: " << b.getArmorName() << endl;
-								cout << "Health Potions: " << b.getHPotion();
-								cout << endl;
-								cout << "BOSS: " << c.getmonsterName() << endl;
-								cout << "BOSS HEALTH: " << c.getmonsterHealth() << endl;
-								cout << endl;
-								cout << "Attack using any letter!" << endl;
-								cout << "Press 'n' to leave" << endl;
-								char key;
-								cin >> key;
+							cout << "Health: " << a.getHealth() << "/" << a.getMaxHealth() << " | Stamina: " << a.getStamina() << " | Schmeebs : " << b.getSchmeebs() << endl;
+							cout << "Weapon: " << b.getWeaponName() << " | Damage: " << a.getDamage() << " | Armor: " << b.getArmorName() << endl;
+							cout << "Health Potions: " << b.getHPotion();
+							cout << endl;
+							cout << "BOSS: " << c.getmonsterName() << endl;
+							cout << "BOSS HEALTH: " << c.getmonsterHealth() << endl;
+							cout << endl;
+							cout << "Attack using any letter!" << endl;
+							cout << "Press 'n' to leave" << endl;
+							cout << "Press 'p' to heal with Health Potions" << endl;
+							char key;
+							cin >> key;
+							if (key == 'p' && b.getHPotion() > 0){
+								a.setHealth(a.getMaxHealth());
+								b.setHPotion(b.getHPotion() - 1);
+							}
+							else{
 								a.setStamina(a.getStamina() - 3);
 								cout << "-3 Stamina!" << endl;
 								cout << "You did " << a.getDamage() << " damage." << endl;
+								cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
 								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+								a.setHealth(a.getHealth() - c.getmonsterDamage());
+							}
 							
 							
 						} while (c.getmonsterHealth() >= 0);
@@ -381,11 +391,12 @@ void Game::run(){
 							if (choice == 'n'){
 								break;
 							}
-							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
-							a.setHealth(a.getHealth() - c.getmonsterDamage());
-							cout << "You did " << a.getDamage() << " damage." << endl;
-							cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
-
+							else{
+								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+								a.setHealth(a.getHealth() - c.getmonsterDamage());
+								cout << "You did " << a.getDamage() << " damage." << endl;
+								cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+							}
 
 						} while (c.getmonsterHealth() > 0);
 						cout << "Monster has been killed" << endl;
@@ -436,15 +447,14 @@ void Game::run(){
 								a.setHealth(a.getMaxHealth());
 								b.setHPotion(b.getHPotion() - 1);
 							}
-							if (key == 'n'){
-								break;
+							else{
+								a.setStamina(a.getStamina() - 3);
+								cout << "-3 Stamina!" << endl;
+								cout << "You did " << a.getDamage() << " damage." << endl;
+								cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+								a.setHealth(a.getHealth() - c.getmonsterDamage());
 							}
-							a.setStamina(a.getStamina() - 3);
-							cout << "-3 Stamina!" << endl;
-							cout << "You did " << a.getDamage() << " damage." << endl;
-							cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
-							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
-							a.setHealth(a.getHealth() - c.getmonsterDamage());
 
 
 						} while (c.getmonsterHealth() >= 0);
@@ -534,15 +544,17 @@ void Game::run(){
 							cout << "Press 'p' to heal with Health Potions" << endl;
 							char key;
 							cin >> key;
-							a.setStamina(a.getStamina() - 3);
-							cout << "-3 Stamina!" << endl;
-							cout << "You did " << a.getDamage() << " damage." << endl;
-							cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
-							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
-							a.setHealth(a.getHealth() - c.getmonsterDamage());
 							if (key == 'p' && b.getHPotion() > 0){
 								a.setHealth(a.getMaxHealth());
 								b.setHPotion(b.getHPotion() - 1);
+							}
+							else{
+								a.setStamina(a.getStamina() - 3);
+								cout << "-3 Stamina!" << endl;
+								cout << "You did " << a.getDamage() << " damage." << endl;
+								cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+								a.setHealth(a.getHealth() - c.getmonsterDamage());
 							}
 
 						} while (c.getmonsterHealth() >= 0);
@@ -630,15 +642,17 @@ void Game::run(){
 							cout << "Press 'p' to heal with Health Potions" << endl;
 							char key;
 							cin >> key;
-							a.setStamina(a.getStamina() - 3);
-							cout << "-3 Stamina!" << endl;
-							cout << "You did " << a.getDamage() << " damage." << endl;
-							cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
-							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
-							a.setHealth(a.getHealth() - c.getmonsterDamage());
 							if (key == 'p' && b.getHPotion() > 0){
 								a.setHealth(a.getMaxHealth());
 								b.setHPotion(b.getHPotion() - 1);
+							}
+							else{
+								a.setStamina(a.getStamina() - 3);
+								cout << "-3 Stamina!" << endl;
+								cout << "You did " << a.getDamage() << " damage." << endl;
+								cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+								a.setHealth(a.getHealth() - c.getmonsterDamage());
 							}
 
 						} while (c.getmonsterHealth() >= 0);
@@ -686,7 +700,7 @@ void Game::run(){
 						b.setSchmeebs(b.getSchmeebs() + 10);
 						break;
 					}
-					if (temp = 2){
+					if (temp == 2){
 						if (b.getSchmeebs() > 110){
 							cout << "You get nothing!" << endl;
 							cout << endl;
@@ -724,15 +738,17 @@ void Game::run(){
 							cout << "Press 'p' to heal with Health Potions" << endl;
 							char key;
 							cin >> key;
-							a.setStamina(a.getStamina() - 3);
-							cout << "-3 Stamina!" << endl;
-							cout << "You did " << a.getDamage() << " damage." << endl;
-							cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
-							c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
-							a.setHealth(a.getHealth() - c.getmonsterDamage());
 							if (key == 'p' && b.getHPotion() > 0){
 								a.setHealth(a.getMaxHealth());
 								b.setHPotion(b.getHPotion() - 1);
+							}
+							else{
+								a.setStamina(a.getStamina() - 3);
+								cout << "-3 Stamina!" << endl;
+								cout << "You did " << a.getDamage() << " damage." << endl;
+								cout << c.getmonsterName() << " did " << c.getmonsterDamage() << " damage." << endl;
+								c.setmonsterHealth(c.getmonsterHealth() - a.getDamage());
+								a.setHealth(a.getHealth() - c.getmonsterDamage());
 							}
 
 						} while (c.getmonsterHealth() >= 0);
